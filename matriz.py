@@ -64,8 +64,10 @@ def matriz_zero():
         a.set(repr(y))
     if(radio==2):
         b.set(repr(y))
-def resultado(n):
-    final=n
+    
+def result(n):
+    final=8
+    
 def desenha():
     global valor1, valor2,a,b
     b = StringVar()
@@ -82,7 +84,8 @@ def desenha():
     fm.config(cursor='gumby')
     global linha, coluna
     fm1 = Frame(root)
-    global final
+    global final, label1
+    final=0
     label1 =Label(fm1, text=final, width=12, height=4, bg="green").pack(side=LEFT,padx=2,  pady=3)
     
     linha=Entry(fm1,textvariable=valor1,font="Arial 10", width=12, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
@@ -116,11 +119,13 @@ def desenha():
     Button(fm2, text='Matriz Transposta',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 def multiplicacao():
+    
     x=eval(a.get())
     y=eval(b.get())    
     z=(dot(x,y))
     print(z)
-    resultado(z)
+    fm1 = Frame(root)
+    Label(fm1, text=z, width=12, height=4, bg="green").pack(side=LEFT,padx=2,  pady=3)
 def apagar():
     b.delete(0, END )
 def apagarum():
