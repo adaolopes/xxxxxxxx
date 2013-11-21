@@ -3,6 +3,7 @@ from random import*
 from numpy import *
 import time
 from math import*
+
 root = Tk()
 root.title ("Matrizes - Adão")
 root.resizable(width=False, height=False)
@@ -35,9 +36,13 @@ def matriz_identidade():
     radio=(int(v.get()))
     y = eye(x,z)
     if(radio==1):
-        a.set(y)
+        a.set(repr(y))
     if(radio==2):
-        b.set(y)
+        b.set(repr(y))
+def nans(shape, dtype=float):
+    a = empty(shape, dtype)
+    a.fill(1)
+    return a
 def matriz_uns():
     global linha, coluna
     x=int(valor1.get())
@@ -45,9 +50,9 @@ def matriz_uns():
     radio=(int(v.get()))
     y = ones((x,z))
     if(radio==1):
-        a.set(y)
+        a.set(repr(y))
     if(radio==2):
-        b.set(y)
+        b.set(repr(y))
 
 def matriz_zero():
     global linha, coluna
@@ -56,23 +61,17 @@ def matriz_zero():
     radio=(int(v.get()))
     y = zeros((x,z))
     if(radio==1):
-        a.set(y)
+        a.set(repr(y))
     if(radio==2):
-        b.set(y)
-
+        b.set(repr(y))
+def resultado(n):
+    final=n
 def desenha():
-    global valor1, valor2,a,b 
+    global valor1, valor2,a,b
     b = StringVar()
     a = StringVar()
-    valor1 = StringVar()
-    valor2 = StringVar()
-    """
-    b=Entry(root,textvariable=valor,font="Arial 10", width=10, bg="white", fg="red")
-    b.pack(padx=10,anchor=N)
-    label2.pack( anchor=NW,padx=2,  pady=3)
-    label1.pack( anchor=NW,padx=2,  pady=3)
-    """
-    final=0
+    valor1 = IntVar()
+    valor2 = IntVar()
     iframe1 = Frame(root, relief=SUNKEN)
     fm = Frame(root)
     fm2 = Frame(root)
@@ -83,10 +82,13 @@ def desenha():
     fm.config(cursor='gumby')
     global linha, coluna
     fm1 = Frame(root)
+    global final
     label1 =Label(fm1, text=final, width=12, height=4, bg="green").pack(side=LEFT,padx=2,  pady=3)
+    
     linha=Entry(fm1,textvariable=valor1,font="Arial 10", width=12, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     coluna=Entry(fm1,textvariable=valor2,font="Arial 10", width=13, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     fm1.pack(fill=BOTH, expand=YES)
+    
 
     global v
     Label(fm2, text="Matriz A:",width=12, bg="red").pack(side=LEFT,padx=2,  pady=3)
@@ -116,11 +118,9 @@ def desenha():
 def multiplicacao():
     x=eval(a.get())
     y=eval(b.get())    
-    print(x)
-    print(y)
-    print(dot(x,y))
-    z=dot(x,y)
+    z=(dot(x,y))
     print(z)
+    resultado(z)
 def apagar():
     b.delete(0, END )
 def apagarum():
