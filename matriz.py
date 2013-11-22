@@ -107,25 +107,38 @@ def desenha():
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
-    Label(fm2, text="Inserir:",width=12, bg="red").pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Matriz Zeros',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Matriz Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Matriz Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
+    Label(fm2, text="Escalar:",width=12, bg="red").pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Zeros',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
 
     fm2.pack(fill=BOTH, expand=YES)
     fm2 = Frame(root)
-    Button(fm2, text='Multiplicação Matrizes',command=multiplicacao).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Soma Matrizes',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Matriz Transposta',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Multiplicação',command=multiplicacao).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Soma',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Transposta',command=transposta).pack(side=LEFT,padx=2,  pady=3)
+    fm2.pack(fill=BOTH, expand=YES)
+
+    fm2 = Frame(root)
+    Button(fm2, text='Matriz Zero',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Matriz Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Matriz Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 def multiplicacao():
-    
     x=eval(a.get())
     y=eval(b.get())    
     z=(dot(x,y))
     print(z)
-    fm1 = Frame(root)
-    Label(fm1, text=z, width=12, height=4, bg="green").pack(side=LEFT,padx=2,  pady=3)
+
+def transposta():
+    x=eval(a.get())
+    y=eval(b.get()) 
+    radio=(int(v.get()))
+    if(radio==1):
+        print(x.T)
+    if(radio==2):
+        print(y.T)
+  
 def apagar():
     b.delete(0, END )
 def apagarum():
