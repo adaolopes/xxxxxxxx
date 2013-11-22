@@ -72,54 +72,53 @@ def desenha():
     global valor1, valor2,a,b
     b = StringVar()
     a = StringVar()
+    num = IntVar()
     escala = IntVar()
     valor1 = IntVar()
     valor2 = IntVar()
     iframe1 = Frame(root, relief=SUNKEN)
     fm = Frame(root)
     fm2 = Frame(root)
-    Label(fm, text="Linha",width=13, bg="blue").pack(side=LEFT,padx=2,  pady=3)
-    Label(fm, text="Coluna",width=14, bg="blue").pack(side=LEFT,padx=2,  pady=3)
-    Label(fm, text="Escalar",width=14, bg="blue").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm, text="Linha",width=9, bg="blue").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm, text="Coluna",width=10, bg="blue").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm, text="Escalar",width=10, bg="blue").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm, text="Número",width=11, bg="blue").pack(side=LEFT,padx=1,  pady=3)
     fm.pack(fill=BOTH, expand=YES)
     fm.config(cursor='gumby')
     global linha, coluna
     fm1 = Frame(root)
-    global final, label1,escalar,v
+    global final, label1,escalar,v,numero,escala
     final=StringVar()    
-    linha=Entry(fm1,textvariable=valor1,font="Arial 10", width=13, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
-    coluna=Entry(fm1,textvariable=valor2,font="Arial 10", width=14, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
-    escalar=Entry(fm1,textvariable=escala,font="Arial 10", width=15, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
+    linha=Entry(fm1,textvariable=valor1,font="Arial 10", width=9, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
+    coluna=Entry(fm1,textvariable=valor2,font="Arial 10", width=11, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
+    escalar=Entry(fm1,textvariable=escala,font="Arial 10", width=10, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
+    numero=Entry(fm1,textvariable=num,font="Arial 10", width=11, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     fm1.pack(fill=BOTH, expand=YES)
 
     Label(fm2, text="Matriz A:",width=8, bg="red").pack(side=LEFT,padx=2,  pady=3)
     v = IntVar()
-    Radiobutton(fm2, variable=v, value=1).pack(side=LEFT,padx=2,  pady=3)
-    matriza=Entry(fm2,textvariable=a,font="Arial 10", width=30, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=4)
+    Radiobutton(fm2, variable=v, value=1).pack(side=LEFT,  pady=3)
+    matriza=Entry(fm2,textvariable=a,font="Arial 10", width=31, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=4)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
     Label(fm2, text="Matriz B:",width=8, bg="red").pack(side=LEFT,padx=2,  pady=3)
-    Radiobutton(fm2, variable=v, value=2).pack(side=LEFT,padx=2,  pady=3)
-    matrizb=Entry(fm2,textvariable=b,font="Arial 10", width=30, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=4)
+    Radiobutton(fm2, variable=v, value=2).pack(side=LEFT,  pady=3)
+    matrizb=Entry(fm2,textvariable=b,font="Arial 10", width=31, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=4)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
     Button(fm2, text='Zeros',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
-
-    fm2.pack(fill=BOTH, expand=YES)
-    fm2 = Frame(root)
-    Button(fm2, text='Multiplicação',command=multiplicacao).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Multiplicação Matriz',command=multiplicacao).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Soma',command=soma).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Transposta',command=transposta).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
-
+    
     fm2 = Frame(root)
-    Button(fm2, text='Matriz Zero',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Matriz Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Matriz Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Transposta',command=transposta).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Multiplicação Escalar',command=escalar_mult).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Exponencial',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
@@ -147,7 +146,15 @@ def soma():
         final.set(x+y)
     if(radio==2):
         final.set(x+y)
-  
+def escalar_mult():
+    z=int(escala.get())
+    radio=(int(v.get()))
+    if(radio==1):
+        x=eval(a.get())
+        final.set(x*z)
+    if(radio==2):
+        y=eval(b.get())
+        final.set(y*z)
 def apagar():
     b.delete(0, END )
 def apagarum():
