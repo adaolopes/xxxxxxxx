@@ -108,13 +108,17 @@ def desenha():
     Button(fm2, text='Zeros',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Multiplicação Matriz',command=multiplicacao).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Soma',command=soma).pack(side=LEFT,padx=2,  pady=3)
+
     fm2.pack(fill=BOTH, expand=YES)
-    
     fm2 = Frame(root)
+    Button(fm2, text='Multiplicação',command=multiplicacao).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Soma',command=soma).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Transposta',command=transposta).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Multiplicação Escalar',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
+    fm2.pack(fill=BOTH, expand=YES)
+
+    fm2 = Frame(root)
+    Button(fm2, text='Matriz Zero',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Matriz Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Matriz Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
