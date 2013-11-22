@@ -72,29 +72,29 @@ def desenha():
     global valor1, valor2,a,b
     b = StringVar()
     a = StringVar()
+    escala = StringVar()
     valor1 = IntVar()
     valor2 = IntVar()
     iframe1 = Frame(root, relief=SUNKEN)
     fm = Frame(root)
     fm2 = Frame(root)
-    resultado =Label(fm, text="Resultado:",width=12, bg="blue").pack(side=LEFT,padx=2,  pady=3)
     Label(fm, text="Linha",width=12, bg="blue").pack(side=LEFT,padx=2,  pady=3)
     Label(fm, text="Coluna",width=12, bg="blue").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm, text="Escalar",width=12, bg="blue").pack(side=LEFT,padx=2,  pady=3)
     fm.pack(fill=BOTH, expand=YES)
     fm.config(cursor='gumby')
     global linha, coluna
     fm1 = Frame(root)
-    global final, label1
-    final=0
-    label1 =Label(fm1, text=final, width=12, height=4, bg="green").pack(side=LEFT,padx=2,  pady=3)
-    
+    global final, label1,escalar
+    final=StringVar()    
     linha=Entry(fm1,textvariable=valor1,font="Arial 10", width=12, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     coluna=Entry(fm1,textvariable=valor2,font="Arial 10", width=13, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
+    escalar=Entry(fm1,textvariable=escala,font="Arial 10", width=13, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     fm1.pack(fill=BOTH, expand=YES)
     
 
     global v
-    Label(fm2, text="Matriz A:",width=12, bg="red").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm2, text="Matriz A:",width=8, bg="red").pack(side=LEFT,padx=2,  pady=3)
     v = IntVar()
     Radiobutton(fm2, variable=v, value=1).pack(side=LEFT,padx=2,  pady=3)
     matriza=Entry(fm2,textvariable=a,font="Arial 10", width=30, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=4)
@@ -107,7 +107,6 @@ def desenha():
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
-    Label(fm2, text="Escalar:",width=12, bg="red").pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Zeros',command=matriz_zero).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
@@ -124,10 +123,16 @@ def desenha():
     Button(fm2, text='Matriz Identidade',command=matriz_identidade).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Matriz Uns',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
+
+    fm2 = Frame(root)
+    resultado =Label(fm2, text="Resultado:",width=12, bg="blue").pack(side=LEFT,padx=2,  pady=3)
+    label1 =Label(fm2, textvariable=final, width=12, height=4, bg="green").pack(side=LEFT,padx=2,  pady=3)
+    fm2.pack(fill=BOTH, expand=YES)
 def multiplicacao():
     x=eval(a.get())
     y=eval(b.get())    
     z=(dot(x,y))
+    final.set(z)
     print(z)
 
 def transposta():
