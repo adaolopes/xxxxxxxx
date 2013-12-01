@@ -64,12 +64,13 @@ def matriz_zero():
         a.set(repr(y))
     if(radio==2):
         b.set(repr(y))
+        
     
 def result(n):
     final=8
     
 def desenha():
-    global valor1, valor2,a,b
+    global valor1, valor2,a,b,escala,num
     b = StringVar()
     a = StringVar()
     num = IntVar()
@@ -87,7 +88,7 @@ def desenha():
     fm.config(cursor='gumby')
     global linha, coluna
     fm1 = Frame(root)
-    global final, label1,escalar,v,numero,escala
+    global final, label1,escalar,v,numero
     final=StringVar()    
     linha=Entry(fm1,textvariable=valor1,font="Arial 10", width=9, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     coluna=Entry(fm1,textvariable=valor2,font="Arial 10", width=11, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
@@ -117,19 +118,76 @@ def desenha():
     
     fm2 = Frame(root)
     Button(fm2, text='Transposta',command=transposta).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Exponencial',command=exponencial).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Determinante',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Inversa',command=inversa).pack(side=LEFT,padx=2,  pady=3)
+    fm2.pack(fill=BOTH, expand=YES)
+
+    fm2 = Frame(root)
     Button(fm2, text='Multiplicação Escalar',command=escalar_mult).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Exponencial',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Trocar linha',command=trocar_linha).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
     resultado =Label(fm2, text="Resultado:",width=8,height=6, bg="blue").pack(side=LEFT,padx=2,  pady=3)
     label1 =Label(fm2, textvariable=final, width=26, height=6, bg="green").pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='  Utilizar  ',command=utilizar).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
+
+def trocar_linha():
+    x=eval(a.get())
+    y=eval(b.get())
+    radio=(int(v.get()))
+    linha1=int(escala.get())
+    linha2=int(num.get())
+    if(radio==1):
+        x[linha1], x[linha2] = x[linha1], x[linha2]
+        final.set(x)
+    if(radio==2):
+        y[linha1], y[linha2] = y[linha1], y[linha2]
+        final.set(y)
+def utilizar():
+    radio=(int(v.get()))
+    if(radio==1):
+        a.set(eval(final.get()))
+    if(radio==2):
+        b.set(eval(final.get()))
+def exponencial():
+    x=eval(a.get())
+    y=eval(b.get())
+    z=int(num.get())
+    print(z)
+    print(x)
+    radio=(int(v.get()))
+    if(radio==1):
+        print(dot(x,x))
+        for i in range(0, z):
+            dot(x,x)
+            z +=1
+        final.set(x)
+    if(radio==2):
+        for i in range(0, z):
+            y=(dot(y,y))
+            z +=1
+
+        final.set(x)
+from numpy import *
+def inversa():
+    
+    x=eval(a.get())
+    y=eval(b.get()) 
+    radio=(int(v.get()))
+    if(radio==1):
+        print(x.I)
+       
+        """final.set((x.I))"""
+    if(radio==2):
+        """final.set((y.I))"""
 def multiplicacao():
     x=eval(a.get())
     y=eval(b.get())    
     z=(dot(x,y))
-    final.set(z)
+    final.set(repr(z))
 def transposta():
     x=eval(a.get())
     y=eval(b.get()) 
@@ -159,41 +217,7 @@ def apagar():
     b.delete(0, END )
 def apagarum():
     b.delete(0)
-def calcular():
-    result = eval(b.get())
-    print (b.get(), "=>", result, type(result))
-    print(valor.set(result))
-def seno():
-    import math
-    graus = float(b.get())
-    angulo = graus * 2 * math.pi / 360.0
-    print(valor.set(math.sin(angulo)))
-def coseno():
-    import math
-    print(valor.set('%g' % math.cos(float(b.get()))))
-def tangente():
-    import math
-    print(valor.set('%g' % math.tan(float(b.get()))))
-def logaritimo():#certo
-    import math
-    print(valor.set(math.log10(float(b.get()))))
-def exponencial():#certo
-    import math
-    print(valor.set('%g' % math.exp(float(b.get()))))
-def pi():
-    import math
-    print(valor.set('%g' % math.pi(float(b.get()))))
-def factorial():
-    import math
-    n=float(b.get())
-    if n == 0 :
-        print(valor.set(1))
-    else:
-        while(i<=n):
-            fact*=i
-            i+=1
-        return fact
-        print(valor.set(fact))
+
 e = Entry(root, width=60, state="readonly")
 e.insert(0,"...")
 def menu():     
