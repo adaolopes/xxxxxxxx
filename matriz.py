@@ -126,7 +126,7 @@ def desenha():
     fm2 = Frame(root)
     Button(fm2, text='Matriz * Escalar',command=escalar_mult).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Trocar linha',command=trocar_linha).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Linha * Escalar',command=linha_escalar).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Linha de Matriz * Escalar ',command=linha_escalar).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
@@ -143,13 +143,11 @@ def linha_escalar():
     if(radio==1):
         valores=x[linha]
         x[linha]=x[linha]*escalar
-        final.set(x)
-        print(x)
+        final.set(repr(x))
     if(radio==2):
         valores=y[linha]
         y[linha]=y[linha]*escalar
-        final.set(y)
-        print (y)
+        final.set(repr(y))
 def trocar_linha():
     x=eval(a.get())
     y=eval(b.get())
@@ -163,20 +161,20 @@ def trocar_linha():
         valores2=x[linha2]
         lista[linha2]=valores1
         lista[linha1]=valores2
-        final.set(lista)
+        final.set(repr(lista))
     if(radio==2):
         valores12=y[linha1]
         valores21=y[linha2]
         lista1[linha2]=valores12
         lista1[linha1]=valores21
-        final.set(lista1)
+        final.set(repr(lista1))
     print (lista)
 def utilizar():
     radio=(int(v.get()))
     if(radio==1):
-        a.set(eval(final.get()))
+        a.set(eval(repr(final.get())))
     if(radio==2):
-        b.set(eval(final.get()))
+        b.set(eval(repr(final.get())))
 def exponencial():
     x=eval(a.get())
     y=eval(b.get())
@@ -218,26 +216,25 @@ def transposta():
     y=eval(b.get()) 
     radio=(int(v.get()))
     if(radio==1):
-        final.set(x.T)
+        final.set(repr(x.T))
     if(radio==2):
-        final.set(y.T)
+        final.set(repr(y.T))
 def soma():
     x=eval(a.get())
     y=eval(b.get()) 
     radio=(int(v.get()))
-    if(radio==1):
-        final.set(x+y)
-    if(radio==2):
-        final.set(x+y)
+    z=(x+y)
+    final.set(repr(z))
+
 def escalar_mult():
     z=int(escala.get())
     radio=(int(v.get()))
     if(radio==1):
         x=eval(a.get())
-        final.set(x*z)
+        final.set(repr(x*z))
     if(radio==2):
         y=eval(b.get())
-        final.set(y*z)
+        final.set(repr(y*z))
 def apagar():
     b.delete(0, END )
 def apagarum():
