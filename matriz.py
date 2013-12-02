@@ -124,8 +124,9 @@ def desenha():
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
-    Button(fm2, text='Multiplicação Escalar',command=escalar_mult).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Matriz * Escalar',command=escalar_mult).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Trocar linha',command=trocar_linha).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Linha * Escalar',command=linha_escalar).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
@@ -133,19 +134,43 @@ def desenha():
     label1 =Label(fm2, textvariable=final, width=26, height=6, bg="green").pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='  Utilizar  ',command=utilizar).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
-
+def linha_escalar():
+    x=eval(a.get())
+    y=eval(b.get())
+    radio=(int(v.get()))
+    escalar=int(escala.get())
+    linha=int(num.get())
+    if(radio==1):
+        valores=x[linha]
+        x[linha]=x[linha]*escalar
+        final.set(x)
+        print(x)
+    if(radio==2):
+        valores=y[linha]
+        y[linha]=y[linha]*escalar
+        final.set(y)
+        print (y)
 def trocar_linha():
     x=eval(a.get())
     y=eval(b.get())
+    lista=eval(a.get())
+    lista1=eval(b.get())
     radio=(int(v.get()))
     linha1=int(escala.get())
     linha2=int(num.get())
     if(radio==1):
-        x[linha1], x[linha2] = x[linha1], x[linha2]
-        final.set(x)
+        valores1=x[linha1]
+        valores2=x[linha2]
+        lista[linha2]=valores1
+        lista[linha1]=valores2
+        final.set(lista)
     if(radio==2):
-        y[linha1], y[linha2] = y[linha1], y[linha2]
-        final.set(y)
+        valores12=y[linha1]
+        valores21=y[linha2]
+        lista1[linha2]=valores12
+        lista1[linha1]=valores21
+        final.set(lista1)
+    print (lista)
 def utilizar():
     radio=(int(v.get()))
     if(radio==1):
