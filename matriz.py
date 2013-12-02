@@ -119,7 +119,7 @@ def desenha():
     fm2 = Frame(root)
     Button(fm2, text='Transposta',command=transposta).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Exponencial',command=exponencial).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='Determinante',command=matriz_uns).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Determinante',command=determinante).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Inversa',command=inversa).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
@@ -134,6 +134,16 @@ def desenha():
     label1 =Label(fm2, textvariable=final, width=26, height=6, bg="green").pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='  Utilizar  ',command=utilizar).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
+def determinante():
+    x=eval(a.get())
+    y=eval(b.get())
+    radio=(int(v.get()))
+    if(radio==1):
+        z=int(linalg.det(x))
+        final.set(z)
+    if(radio==2):
+        p=int(linalg.det(y))
+        final.set(p)
 def linha_escalar():
     x=eval(a.get())
     y=eval(b.get())
@@ -201,7 +211,8 @@ def inversa():
     y=eval(b.get()) 
     radio=(int(v.get()))
     if(radio==1):
-        print(x.I)
+        z=linalg.inv(x)
+        print(z)
        
         """final.set((x.I))"""
     if(radio==2):
