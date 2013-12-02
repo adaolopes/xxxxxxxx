@@ -212,11 +212,10 @@ def inversa():
     radio=(int(v.get()))
     if(radio==1):
         z=linalg.inv(x)
-        print(z)
-       
-        """final.set((x.I))"""
+        final.set(repr(z))
     if(radio==2):
-        """final.set((y.I))"""
+        z=linalg.inv(y)
+        final.set(repr(z))
 def multiplicacao():
     x=eval(a.get())
     y=eval(b.get())    
