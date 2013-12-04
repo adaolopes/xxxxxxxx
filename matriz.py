@@ -73,8 +73,8 @@ def desenha():
     global valor1, valor2,a,b,escala,num
     b = StringVar()
     a = StringVar()
-    num = IntVar()
-    escala = IntVar()
+    num = StringVar()
+    escala = StringVar()
     valor1 = IntVar()
     valor2 = IntVar()
     iframe1 = Frame(root, relief=SUNKEN)
@@ -130,10 +130,35 @@ def desenha():
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
+    Button(fm2, text='Subistituir Linha',command=substituir_linha).pack(side=LEFT,padx=2,  pady=3)
+    fm2.pack(fill=BOTH, expand=YES)
+
+    fm2 = Frame(root)
     resultado =Label(fm2, text="Resultado:",width=8,height=6, bg="blue").pack(side=LEFT,padx=2,  pady=3)
     label1 =Label(fm2, textvariable=final, width=26, height=6, bg="green").pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='  Utilizar  ',command=utilizar).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='  Usar  ',command=utilizar).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
+
+    
+def  substituir_linha():
+    escalar=float(escala.get())
+    linha=str(num.get())
+    l=[]
+    x=linha.split(' ')
+    for i in range (len(x)):
+        y=int(x[i])
+        l.append(y)
+    aa=eval(a.get())
+    bb=eval(b.get())
+    radio=(int(v.get()))
+    if(radio==1):
+        aa[l[0]]=(escalar*(aa[l[1]])+aa[l[0]])
+        final.set(aa)
+    if(radio==2):
+        bb[l[0]]=(escalar*(bb[l[1]]+aa[l[0]]))
+        final.set(bb)
+    
+    
 def determinante():
     x=eval(a.get())
     y=eval(b.get())
