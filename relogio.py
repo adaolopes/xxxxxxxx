@@ -1,7 +1,13 @@
 import tkinter 
 rel=tkinter.Label()
-rel['text']='19:14:15'
+"""def fechar():
+    root.destroy()
+    import caluladora
+    caluladora.menu_principal()
+b=tkinter.Button(fg="red",command=fechar)
+b['text']='Fechar'"""
 rel.pack()
+#b.pack()
 rel['font']='Helvetica 20 bold'
 from time import strftime
 def tic(): 
@@ -10,3 +16,4 @@ tic()
 def tac():
     tic()
     rel.after(1000,tac)
+
