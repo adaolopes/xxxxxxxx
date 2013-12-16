@@ -15,6 +15,7 @@ def hora():
     relogio.tac()
 def sair():
     print("sair")
+    root.destroy()
 
 def inseresub():
      b.insert(INSERT,"-")
@@ -153,20 +154,21 @@ def factorial():
         return fact
         print(valor.set(fact))
 
-
-menu = Menu(root)
-root.config(menu=menu)
-filemenu = Menu(menu)
-menu.add_cascade(label="Ver", menu=filemenu)
-filemenu.add_command(label="Equações")
-filemenu.add_command(label="Matrizes", command=matriz)
-filemenu.add_command(label="Conversor")
-filemenu.add_separator()
-filemenu.add_command(label="Sair", command=sair)
-menu.add_cascade(label="Hora", command=hora)
-helpmenu = Menu(menu)
-menu.add_cascade(label="Ajuda", menu=helpmenu)
-helpmenu.add_command(label="Acerca da Calculadora")
-desenhar()
+def menu_principal():
+    menu = Menu(root)
+    root.config(menu=menu)
+    filemenu = Menu(menu)
+    menu.add_cascade(label="Ver", menu=filemenu)
+    filemenu.add_command(label="Equações")
+    filemenu.add_command(label="Matrizes", command=matriz)
+    filemenu.add_command(label="Conversor")
+    filemenu.add_separator()
+    filemenu.add_command(label="Sair", command=sair)
+    menu.add_cascade(label="Hora", command=hora)
+    helpmenu = Menu(menu)
+    menu.add_cascade(label="Ajuda", menu=helpmenu)
+    helpmenu.add_command(label="Acerca da Calculadora")
+    desenhar()
+menu_principal()
 root.mainloop()
 mainloop()
