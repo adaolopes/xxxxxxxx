@@ -119,29 +119,50 @@ def desenhar():
     fm2.pack(fill=BOTH, expand=YES)
     
 def calcular():
-    result = eval(b.get())
-    print (b.get(), "=>", result, type(result))
-    print(valor.set(result))
+    try:
+        result = eval(b.get())
+        print (b.get(), "=>", result, type(result))
+        print(valor.set(result))      
+    except:
+        valor.set("Error")
 def seno():
     import math
-    graus = float(b.get())
-    angulo = graus * 2 * math.pi / 360.0
-    print(valor.set(math.sin(angulo)))
+    try:
+        graus = float(b.get())
+        angulo = graus * 2 * math.pi / 360.0
+        valor.set(math.sin(angulo))
+    except:
+        valor.set("Error")   
 def coseno():
     import math
-    print(valor.set('%g' % math.cos(float(b.get()))))
+    try:
+        print(valor.set('%g' % math.cos(float(b.get()))))
+    except:
+        valor.set("Error")
 def tangente():
     import math
-    print(valor.set('%g' % math.tan(float(b.get()))))
+    try:
+        print(valor.set('%g' % math.tan(float(b.get()))))
+    except:
+        valor.set("Error")
 def logaritimo():#certo
     import math
-    print(valor.set(math.log10(float(b.get()))))
+    try:
+       print(valor.set(math.log10(float(b.get()))))
+    except:
+        valor.set("Error")
 def exponencial():#certo
     import math
-    print(valor.set('%g' % math.exp(float(b.get()))))
+    try:
+        print(valor.set('%g' % math.exp(float(b.get()))))
+    except:
+        valor.set("Error")
 def pi():
     import math
-    print(valor.set('%g' % math.pi(float(b.get()))))
+    try:
+        print(valor.set('%g' % math.pi(float(b.get()))))
+    except:
+        valor.set("Error")
 def factorial():
     import math
     n=float(b.get())
