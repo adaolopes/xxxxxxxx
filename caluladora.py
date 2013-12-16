@@ -7,17 +7,15 @@ global b
 root = Tk()
 root.title ("Calculadora - Adão")
 root.resizable(width=False, height=False)
-def callback():
+def matriz():
     import matriz
     matriz.menu()
+def hora():
+    import relogio
+    relogio.tac()
+def sair():
+    print("sair")
 
-def tick():
-    global curtime
-    newtime = time.strftime('%H:%M:%S')
-    if newtime != curtime:
-        curtime = newtime
-        clock.config(text=curtime)
-    clock.after(200, tick)
 def inseresub():
      b.insert(INSERT,"-")
 def inseresoma():
@@ -156,29 +154,19 @@ def factorial():
         print(valor.set(fact))
 
 
-import time
-gmt = time.gmtime(time.time())
-fmt = '%a, %d %b %Y %H:%M:%S GMT'
-str = time.strftime(fmt, gmt)
-hdr = 'Date: ' + str
-tex=hdr
-global tex
-
 menu = Menu(root)
 root.config(menu=menu)
 filemenu = Menu(menu)
 menu.add_cascade(label="Ver", menu=filemenu)
 filemenu.add_command(label="Equações")
-filemenu.add_command(label="Matrizes", command=callback)
+filemenu.add_command(label="Matrizes", command=matriz)
 filemenu.add_command(label="Conversor")
 filemenu.add_separator()
-filemenu.add_command(label="Sair", command=callback)
-menu.add_cascade(label="Hora")
+filemenu.add_command(label="Sair", command=sair)
+menu.add_cascade(label="Hora", command=hora)
 helpmenu = Menu(menu)
 menu.add_cascade(label="Ajuda", menu=helpmenu)
 helpmenu.add_command(label="Acerca da Calculadora")
-menu.add_cascade(label=tex, menu=helpmenu)
 desenhar()
-Tamanhos_Limite(root)
 root.mainloop()
 mainloop()
