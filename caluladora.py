@@ -10,13 +10,7 @@ root.resizable(width=False, height=False)
 def callback():
     import matriz
     matriz.menu()
-def relogio():
-    import time
-    gmt = time.gmtime(time.time())
-    fmt = '%a, %d %b %Y %H:%M:%S GMT'
-    str = time.strftime(fmt, gmt)
-    hdr = 'Date: ' + str
-    print (hdr)
+
 def tick():
     global curtime
     newtime = time.strftime('%H:%M:%S')
@@ -55,7 +49,6 @@ def insere9():
    
 def desenhar():
     global b,valor
-    
     Label(root).pack(side=TOP, padx=1, pady=0)
     valor = StringVar()
     b=Entry(root,textvariable=valor,justify=RIGHT,font="Arial 10", width=35, bg="white", fg="red",relief="groove", borderwidth=15)
@@ -65,7 +58,7 @@ def desenhar():
     Radiobutton(iframe1, text='Graus', variable=v,value=3).pack(side=RIGHT, anchor=W)
     Radiobutton(iframe1, text='Radianos', variable=v,value=2).pack(side=RIGHT, anchor=W)
     iframe1.pack( pady=1, padx=1)
-    print(str(v))
+    print(v)
     fm = Frame(root)
     compute=Button(fm, text='sin', command=seno).pack(side=LEFT,padx=2,  pady=3)
     Button(fm, text='cos', command=coseno).pack(side=LEFT,padx=2,  pady=3)
@@ -162,7 +155,14 @@ def factorial():
         return fact
         print(valor.set(fact))
 
-    
+
+import time
+gmt = time.gmtime(time.time())
+fmt = '%a, %d %b %Y %H:%M:%S GMT'
+str = time.strftime(fmt, gmt)
+hdr = 'Date: ' + str
+tex=hdr
+global tex
 
 menu = Menu(root)
 root.config(menu=menu)
@@ -177,9 +177,8 @@ menu.add_cascade(label="Hora")
 helpmenu = Menu(menu)
 menu.add_cascade(label="Ajuda", menu=helpmenu)
 helpmenu.add_command(label="Acerca da Calculadora")
+menu.add_cascade(label=tex, menu=helpmenu)
 desenhar()
-relogio()
-Nao_Redimensiona(root)
 Tamanhos_Limite(root)
 root.mainloop()
 mainloop()
