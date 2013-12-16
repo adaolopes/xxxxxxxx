@@ -8,7 +8,8 @@ root = Tk()
 root.title ("Calculadora - Adão")
 root.resizable(width=False, height=False)
 def callback():
-    print ("called the callback!")
+    import matriz
+    matriz.menu()
 def relogio():
     import time
     gmt = time.gmtime(time.time())
@@ -162,57 +163,20 @@ def factorial():
         print(valor.set(fact))
 
     
-"""
-    botao0= Button(root,text="0", fg="red", command=insere0)
-    botao0.pack( padx=2,  pady=3, side=TOP, anchor=W,  expand=YES)
 
-    botao1= Button(root,text="1", fg="red", command=insere1)
-    botao1.pack( padx=2, pady=4,side=TOP, anchor=W,  expand=YES )
-
-    botao2= Button(root,text="2", fg="red", command=insere2)
-    botao2.pack(  padx=2,  pady=4, side=TOP, anchor=W,  expand=YES)
-
-   
-
-    botao4= Button(root,text="4", fg="red", command=insere4)
-    botao4.pack( padx=2,  pady=4,side=LEFT,anchor=N )
-
-    botao5= Button(root,text="5", fg="red", command=insere5)
-    botao5.pack( padx=2,  pady=4 ,side=LEFT)
-
-    botao6= Button(root,text="6", fg="red", command=insere6)
-    botao6.pack( padx=2,  pady=4,side=LEFT )
-
-    botao7= Button(root,text="7", fg="red", command=insere7 )
-    botao7.pack( padx=2,  pady=4,side=LEFT)
-
-    botao8= Button(root,text="8", fg="red", command=insere8 )
-    botao8.pack( padx=2,  pady=4)
-
-    botao9= Button(root,text="9", fg="red", command=insere9)
-    botao9.pack( padx=2,  pady=4 )
-
-    botaoigual= Button(root,text="=", fg="red", command=tick())
-    botaoigual.pack(  padx=15, )
-
-    Label(root,text='Resultado:').pack(padx=1, pady=4)
-    resultado = StringVar()
-    b=Entry(root,textvariable=resultado,justify=CENTER, width=6, bg="white", fg="black")
-    b.pack(padx=1, pady=4)
-"""
 menu = Menu(root)
 root.config(menu=menu)
 filemenu = Menu(menu)
 menu.add_cascade(label="Ver", menu=filemenu)
-filemenu.add_command(label="Equações", command=callback)
+filemenu.add_command(label="Equações")
 filemenu.add_command(label="Matrizes", command=callback)
-filemenu.add_command(label="Conversor", command=callback)
+filemenu.add_command(label="Conversor")
 filemenu.add_separator()
 filemenu.add_command(label="Sair", command=callback)
 menu.add_cascade(label="Hora")
 helpmenu = Menu(menu)
 menu.add_cascade(label="Ajuda", menu=helpmenu)
-helpmenu.add_command(label="Acerca da Calculadora", command=callback)
+helpmenu.add_command(label="Acerca da Calculadora")
 desenhar()
 relogio()
 Nao_Redimensiona(root)
