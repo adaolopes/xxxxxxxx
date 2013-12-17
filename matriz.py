@@ -147,9 +147,11 @@ def quadrada():
     if(radio==1):
         z=sqrt(x)
         final.set(z)
+        uso.set(repr(z))
     if(radio==2):
         p=sqrt(y)
-        final.set(p)    
+        final.set(p)
+        uso.set(repr(p))
     
 def determinante():
     x=eval(a.get())
@@ -213,18 +215,27 @@ def exponencial():
     print(z)
     print(x)
     radio=(int(v.get()))
-    if(radio==1):
-        print(dot(x,x))
-        for i in range(0, z):
-            dot(x,x)
-            z +=1
-        final.set(x)
-    if(radio==2):
-        for i in range(0, z):
-            y=(dot(y,y))
-            z +=1
+    if(radio==1 and z<=2):
+        final.set(dot(x,x))
+        uso.set(repr(dot(x,x)))
+    if(radio==1 and z>2):
+        o=(dot(x,x))
+        for i in range(0, z-2):
+            o=dot(o,x)
+            i +=1
+        final.set(o)
+        uso.set(repr(o))
+    if(radio==2 and z<=2):
+        final.set(dot(y,y))
+        uso.set(repr(dot(y,y)))
+    if(radio==2 and z>2):
+        l=(dot(y,y))
+        for i in range(0, z-2):
+            l=dot(l,y)
+            i +=1
+        final.set(l)
+        uso.set(repr(l))
 
-        final.set(x)
 from numpy import *
 def inversa():
     
