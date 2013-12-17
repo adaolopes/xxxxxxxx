@@ -60,10 +60,10 @@ def desenha():
     iframe1 = Frame(root, relief=SUNKEN)
     fm = Frame(root)
     fm2 = Frame(root)
-    Label(fm, text="Linha",width=9, bg="blue").pack(side=LEFT,padx=2,  pady=3)
-    Label(fm, text="Coluna",width=10, bg="blue").pack(side=LEFT,padx=2,  pady=3)
-    Label(fm, text="Escalar",width=10, bg="blue").pack(side=LEFT,padx=2,  pady=3)
-    Label(fm, text="Número",width=11, bg="blue").pack(side=LEFT,padx=1,  pady=3)
+    Label(fm, text="Linha",width=9, bg="Cyan4").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm, text="Coluna",width=10, bg="Cyan4").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm, text="Escalar",width=10, bg="Cyan4").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm, text="Número",width=11, bg="Cyan4").pack(side=LEFT,padx=1,  pady=3)
     fm.pack(fill=BOTH, expand=YES)
     fm.config(cursor='gumby')
     global linha, coluna
@@ -116,7 +116,7 @@ def desenha():
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
-    resultado =Label(fm2, text="Resultado:",width=8,height=6, bg="blue").pack(side=LEFT,padx=2,  pady=3)
+    resultado =Label(fm2, text="Resultado:",width=8,height=6, bg="Cyan4").pack(side=LEFT,padx=2,  pady=3)
     label1 =Label(fm2, textvariable=final, width=26, height=6, bg="green").pack(side=LEFT,padx=2,  pady=3)
     label1 =Label(fm2, textvariable=uso, width=26, height=6, bg="green")
     Button(fm2, text='  Usar  ',command=utilizar).pack(side=LEFT,padx=2,  pady=3)
