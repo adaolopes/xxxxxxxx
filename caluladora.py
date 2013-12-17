@@ -139,7 +139,7 @@ def desenhar():
     Button(fm1, text='8',fg="red",command=insere8).pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='9',fg="red",command=insere9).pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='/',fg="blue",command=inserediv).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm1, text='x^2').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm1, text='e',command=e).pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='π',command=pi).pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='√x').pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='n!',command=factorial).pack(side=LEFT,padx=2,  pady=3)
@@ -153,7 +153,7 @@ def desenhar():
     Button(fm2, text='*',fg="blue",command=inseremult).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='+',command=inseresoma,fg="blue").pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='%').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='mod').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='x^2').pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='log').pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='exp').pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
@@ -222,11 +222,21 @@ def exponencial():#certo
     except:
         valor.set("Error")
 def pi():
-    try:
-        import math
-        print(valor.set(math.pi()))
-    except:
-        valor.set("Error")
+    x=b.get()
+    import math
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,math.pi)
+    else:
+        b.insert(INSERT,math.pi)
+def e():
+    x=b.get()
+    import math
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,math.e)
+    else:
+        b.insert(INSERT,math.e)
 def factorial():    
     try:
         import math
