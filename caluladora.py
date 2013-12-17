@@ -26,25 +26,75 @@ def inseremult():
 def inserediv():
     b.insert(INSERT,"/")
 def insere0():
-     b.insert(INSERT,"0")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"0")
+    else:
+        b.insert(INSERT,"0")
 def insere1():
-     b.insert(INSERT,"1")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"1")
+    else:
+        b.insert(INSERT,"1")
 def insere2():
-    b.insert(INSERT,"2")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"2")
+    else:
+        b.insert(INSERT,"2")
 def insere3():
-    b.insert(INSERT,"3")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"3")
+    else:
+        b.insert(INSERT,"3")
 def insere4():
-    b.insert(INSERT,"4")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"4")
+    else:
+        b.insert(INSERT,"4")
 def insere5():
-    b.insert(INSERT,"5")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"5")
+    else:
+        b.insert(INSERT,"5")
 def insere6():
-    b.insert(INSERT,"6")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"6")
+    else:
+        b.insert(INSERT,"6")
 def insere7():
-    b.insert(INSERT,"7")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"7")
+    else:
+        b.insert(INSERT,"7")
 def insere8():
-    b.insert(INSERT,"8")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"8")
+    else:
+        b.insert(INSERT,"8")
 def insere9():
-    b.insert(INSERT,"9")
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"9")
+    else:
+        b.insert(INSERT,"9")
    
 def desenhar():
     global b,valor
@@ -65,8 +115,8 @@ def desenhar():
     Button(fm, text='mod').pack(side=LEFT,padx=2,  pady=3)
     Button(fm, text='log', command=logaritimo).pack(side=LEFT,padx=2,  pady=3)
     Button(fm, text='exp', command=exponencial).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm, text='(').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm, text=')').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm, text='(',command=pare).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm, text=')',command=pare2).pack(side=LEFT,padx=2,  pady=3)
     Button(fm, text='1/x').pack(side=LEFT,padx=2,  pady=3)    
     fm.pack(fill=BOTH, expand=YES)
     fm.config(cursor='gumby')
@@ -112,12 +162,13 @@ def desenhar():
     Button(fm2, text='0',command=insere0,fg="red").pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='.').pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='+',fg="blue").pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='limpar').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='limpar',command=limpar).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='exp').pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='mod').pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='log').pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
-    
+def limpar():
+    b.delete(0, END)    
 def calcular():
     try:
         result = eval(b.get())
@@ -158,23 +209,17 @@ def exponencial():#certo
     except:
         valor.set("Error")
 def pi():
-    import math
     try:
-        print(valor.set('%g' % math.pi(float(b.get()))))
+        import math
+        print(valor.set(math.pi()))
     except:
         valor.set("Error")
-def factorial():
-    import math
-    n=float(b.get())
-    if n == 0 :
-        print(valor.set(1))
-    else:
-        while(i<=n):
-            fact*=i
-            i+=1
-        return fact
-        print(valor.set(fact))
-
+def factorial():    
+    try:
+        import math
+        print(valor.set(math.factorial(int(b.get()))))
+    except:
+        valor.set("Error")
 def menu_principal():
     menu = Menu(root)
     root.config(menu=menu)
