@@ -131,15 +131,18 @@ def  substituir_linha():
     for i in range (len(x)):
         y=int(x[i])
         l.append(y)
+        i+=1
     aa=eval(a.get())
     bb=eval(b.get())
     radio=(int(v.get()))
     if(radio==1):
         aa[l[0]]=(escalar*(aa[l[1]])+aa[l[0]])
         final.set(aa)
+        uso.set(repr(aa))
     if(radio==2):
-        bb[l[0]]=(escalar*(bb[l[1]]+aa[l[0]]))
+        bb[l[0]]=(escalar*(bb[l[1]])+bb[l[0]])
         final.set(bb)
+        uso.set(repr(bb))
 def quadrada():
     x=eval(a.get())
     y=eval(b.get())
