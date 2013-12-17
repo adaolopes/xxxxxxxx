@@ -7,28 +7,7 @@ from math import*
 root = Tk()
 root.title ("Matrizes - Adão")
 root.resizable(width=False, height=False)
-def callback():
-    print ("called the callback!")
-def relogio():
-    import time
-    gmt = time.gmtime(time.time())
-    fmt = '%a, %d %b %Y %H:%M:%S GMT'
-    str = time.strftime(fmt, gmt)
-    hdr = 'Date: ' + str
-    print (hdr)
-def tick():
-    global curtime
-    newtime = time.strftime('%H:%M:%S')
-    if newtime != curtime:
-        curtime = newtime
-        clock.config(text=curtime)
-    clock.after(200, tick)
-def especial():
-    y=b.get() 
-    import funcao_especial
-    res=funcao_especial.funcao(float(y))
-    print(valor.set(res))
-  
+
 def matriz_identidade():
     global linha, coluna
     x=int(valor1.get())
@@ -70,7 +49,8 @@ def result(n):
     final=8
     
 def desenha():
-    global valor1, valor2,a,b,escala,num
+    global valor1, valor2,a,b,escala,num,uso
+    uso=StringVar() 
     b = StringVar()
     a = StringVar()
     num = StringVar()
@@ -89,7 +69,8 @@ def desenha():
     global linha, coluna
     fm1 = Frame(root)
     global final, label1,escalar,v,numero
-    final=StringVar()    
+    final=StringVar()
+    
     linha=Entry(fm1,textvariable=valor1,font="Arial 10", width=9, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     coluna=Entry(fm1,textvariable=valor2,font="Arial 10", width=11, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     escalar=Entry(fm1,textvariable=escala,font="Arial 10", width=10, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
@@ -136,6 +117,7 @@ def desenha():
     fm2 = Frame(root)
     resultado =Label(fm2, text="Resultado:",width=8,height=6, bg="blue").pack(side=LEFT,padx=2,  pady=3)
     label1 =Label(fm2, textvariable=final, width=26, height=6, bg="green").pack(side=LEFT,padx=2,  pady=3)
+    label1 =Label(fm2, textvariable=uso, width=26, height=6, bg="green")
     Button(fm2, text='  Usar  ',command=utilizar).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
@@ -178,11 +160,13 @@ def linha_escalar():
     if(radio==1):
         valores=x[linha]
         x[linha]=x[linha]*escalar
-        final.set(repr(x))
+        final.set(x)
+        uso.set(repr(x))
     if(radio==2):
         valores=y[linha]
         y[linha]=y[linha]*escalar
-        final.set(repr(y))
+        final.set(y)
+        uso.set(repr(y))
 def trocar_linha():
     x=eval(a.get())
     y=eval(b.get())
@@ -196,20 +180,22 @@ def trocar_linha():
         valores2=x[linha2]
         lista[linha2]=valores1
         lista[linha1]=valores2
-        final.set(repr(lista))
+        final.set(lista)
+        uso.set(repr(lista))
     if(radio==2):
         valores12=y[linha1]
         valores21=y[linha2]
         lista1[linha2]=valores12
         lista1[linha1]=valores21
-        final.set(repr(lista1))
+        final.set(lista1)
+        uso.set(repr(lista1))
     print (lista)
 def utilizar():
     radio=(int(v.get()))
     if(radio==1):
-        a.set(eval(repr(final.get())))
+        a.set(eval(repr(uso.get())))
     if(radio==2):
-        b.set(eval(repr(final.get())))
+        b.set(eval(repr(uso.get())))
 def exponencial():
     x=eval(a.get())
     y=eval(b.get())
@@ -237,39 +223,47 @@ def inversa():
     radio=(int(v.get()))
     if(radio==1):
         z=linalg.inv(x)
-        final.set(repr(z))
+        final.set(z)
+        uso.set(repr(z))
     if(radio==2):
         z=linalg.inv(y)
-        final.set(repr(z))
+        final.set(z)
+        uso.set(repr(z))
 def multiplicacao():
     x=eval(a.get())
     y=eval(b.get())    
     z=(dot(x,y))
-    final.set(repr(z))
+    final.set(z)
+    uso.set(repr(z))
 def transposta():
     x=eval(a.get())
     y=eval(b.get()) 
     radio=(int(v.get()))
     if(radio==1):
-        final.set(repr(x.T))
+        final.set(x.T)
+        uso.set(repr(x.T))
     if(radio==2):
-        final.set(repr(y.T))
+        final.set(y.T)
+        uso.set(repr(y.T))
 def soma():
     x=eval(a.get())
     y=eval(b.get()) 
     radio=(int(v.get()))
     z=(x+y)
-    final.set(repr(z))
+    final.set(z)
+    uso.set(repr(z))
 
 def escalar_mult():
     z=int(escala.get())
     radio=(int(v.get()))
     if(radio==1):
         x=eval(a.get())
-        final.set(repr(x*z))
+        final.set(x*z)
+        uso.set(repr(x*z))
     if(radio==2):
         y=eval(b.get())
-        final.set(repr(y*z))
+        final.set(y*z)
+        uso.set(repr(y*z))
 def apagar():
     b.delete(0, END )
 def apagarum():
@@ -277,17 +271,24 @@ def apagarum():
 
 e = Entry(root, width=60, state="readonly")
 e.insert(0,"...")
+def callback():
+    print("Não esta pronto");
+def hora():
+    import relogio
+    relogio.tac()
+def sair():
+    print("sair")
+    root.destroy()
 def menu():     
     menu = Menu(root)
     root.config(menu=menu)
     filemenu = Menu(menu)
     menu.add_cascade(label="Ver", menu=filemenu)
     filemenu.add_command(label="Equações", command=callback)
-    filemenu.add_command(label="Matrizes", command=callback)
     filemenu.add_command(label="Conversor", command=callback)
     filemenu.add_separator()
-    filemenu.add_command(label="Sair", command=callback)
-    menu.add_cascade(label="Hora")
+    filemenu.add_command(label="Sair", command=sair)
+    menu.add_cascade(label="Hora", command=hora)
     helpmenu = Menu(menu)
     menu.add_cascade(label="Ajuda", menu=helpmenu)
 menu()
