@@ -51,6 +51,7 @@ def result(n):
 def desenha():
     global valor1, valor2,a,b,escala,num,uso, durty,cor
     durty=True
+    cor = StringVar()
     verificar_cor()
     uso=StringVar() 
     b = StringVar()
@@ -115,6 +116,7 @@ def desenha():
     fm2 = Frame(root)
     Button(fm2, text='Subistituir Linha',command=substituir_linha).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Matriz Quadrada',command=quadrada).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Vectores Proprios',command=vectores_proprios).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
     global cor
     cor="Cyan4"
@@ -127,9 +129,11 @@ def desenha():
 def verificar_cor():
     durty= True
     if(durty==True):
-        cor="Cyan4"
+        x=("Cyan4")
+        cor.set(x)
     if(durty==False):
-        cor="Cyan3"
+        y=("Cyan3")
+        cor.set(y)
    
 def  substituir_linha():
     escalar=float(escala.get())
@@ -164,6 +168,18 @@ def quadrada():
         uso.set(repr(z))
     if(radio==2):
         p=sqrt(y)
+        final.set(p)
+        uso.set(repr(p))
+def vectores_proprios():
+    x=eval(a.get())
+    y=eval(b.get())
+    radio=(int(v.get()))
+    if(radio==1):
+        z=linalg.eig(x)
+        final.set(z)
+        uso.set(repr(z))
+    if(radio==2):
+        p=linalg.eig(y)
         final.set(p)
         uso.set(repr(p))
     
