@@ -135,7 +135,7 @@ def desenhar():
     global b,valor
     Label(root).pack(side=TOP, padx=1, pady=0)
     valor = StringVar()
-    b=Entry(root,textvariable=valor,justify=RIGHT,font="Arial 10", width=35, bg="white", fg="red",relief="groove", borderwidth=15)
+    b=Entry(root,textvariable=valor,justify=RIGHT,font="Arial 10", width=34, bg="white", fg="red",relief="groove", borderwidth=15)
     b.pack(padx=1)
     iframe1 = Frame(root, relief=SUNKEN)
     v=IntVar()
@@ -151,7 +151,7 @@ def desenhar():
     Button(fm, text='log', command=logaritimo).pack(side=LEFT,padx=2,  pady=3)
     Button(fm, text='exp', command=exponencial).pack(side=LEFT,padx=2,  pady=3)
     Button(fm, text='(',command=pare).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm, text=')',command=pare2).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm, text=')',command=pare2).pack(side=LEFT,padx=3,  pady=3)
     Button(fm, text='1/x').pack(side=LEFT,padx=2,  pady=3)    
     fm.pack(fill=BOTH, expand=YES)
     fm.config(cursor='gumby')
@@ -164,7 +164,7 @@ def desenhar():
     Button(fm1, text='e',command=e).pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='π',command=pi).pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='√x',command=quadrado).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm1, text='inserir exponencial',command=insere_exp).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm1, text=' inserir exponencial',command=insere_exp).pack(side=LEFT,padx=2,  pady=3)
     fm1.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
@@ -198,6 +198,7 @@ def desenhar():
     Button(fm2, text='limpar',command=limpar).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='exp').pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='mod').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='log').pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='log').pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 def limpar():
