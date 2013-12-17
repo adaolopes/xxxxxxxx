@@ -16,4 +16,4 @@ def tac():
     tic()
     rel.after(1000,tac)
 
-tac()
+

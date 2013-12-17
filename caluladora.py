@@ -102,6 +102,9 @@ def pare():
         b.insert(INSERT,"(")
     else:
         b.insert(INSERT,"(")
+def inser():
+    b.insert(INSERT,".")
+
 def pare2():
     x=b.get()
     if(x=="Error"):
@@ -173,7 +176,7 @@ def desenhar():
     fm2 = Frame(root)
     Button(fm2, text='=',command=calcular).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='0',command=insere0,fg="red").pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='.').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='.',command=inser).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='+',fg="blue").pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='limpar',command=limpar).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='exp').pack(side=LEFT,padx=2,  pady=3)
