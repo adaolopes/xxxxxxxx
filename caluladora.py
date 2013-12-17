@@ -95,7 +95,20 @@ def insere9():
         b.insert(INSERT,"9")
     else:
         b.insert(INSERT,"9")
-   
+def pare():
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"(")
+    else:
+        b.insert(INSERT,"(")
+def pare2():
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,")")
+    else:
+        b.insert(INSERT,")") 
 def desenhar():
     global b,valor
     Label(root).pack(side=TOP, padx=1, pady=0)
