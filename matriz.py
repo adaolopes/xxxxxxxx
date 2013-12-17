@@ -49,7 +49,9 @@ def result(n):
     final=8
     
 def desenha():
-    global valor1, valor2,a,b,escala,num,uso
+    global valor1, valor2,a,b,escala,num,uso, durty,cor
+    durty=True
+    verificar_cor()
     uso=StringVar() 
     b = StringVar()
     a = StringVar()
@@ -77,14 +79,14 @@ def desenha():
     numero=Entry(fm1,textvariable=num,font="Arial 10", width=11, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=3)
     fm1.pack(fill=BOTH, expand=YES)
 
-    Label(fm2, text="Matriz A:",width=8, bg="red").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm2, text="Matriz A:",width=8, bg="Cyan4").pack(side=LEFT,padx=2,  pady=3)
     v = IntVar()
     Radiobutton(fm2, variable=v, value=1).pack(side=LEFT,  pady=3)
     matriza=Entry(fm2,textvariable=a,font="Arial 10", width=31, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=4)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
-    Label(fm2, text="Matriz B:",width=8, bg="red").pack(side=LEFT,padx=2,  pady=3)
+    Label(fm2, text="Matriz B:",width=8, bg="Cyan4").pack(side=LEFT,padx=2,  pady=3)
     Radiobutton(fm2, variable=v, value=2).pack(side=LEFT,  pady=3)
     matrizb=Entry(fm2,textvariable=b,font="Arial 10", width=31, bg="white", fg="red").pack(side=LEFT,anchor=N,padx=2,  pady=4)
     fm2.pack(fill=BOTH, expand=YES)
@@ -114,15 +116,21 @@ def desenha():
     Button(fm2, text='Subistituir Linha',command=substituir_linha).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='Matriz Quadrada',command=quadrada).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
-
+    global cor
+    cor="Cyan4"
     fm2 = Frame(root)
     resultado =Label(fm2, text="Resultado:",width=8,height=6, bg="Cyan4").pack(side=LEFT,padx=2,  pady=3)
-    label1 =Label(fm2, textvariable=final, width=26, height=6, bg="green").pack(side=LEFT,padx=2,  pady=3)
+    label1 =Label(fm2, textvariable=final, width=26, height=6, bg=cor).pack(side=LEFT,padx=2,  pady=3)
     label1 =Label(fm2, textvariable=uso, width=26, height=6, bg="green")
     Button(fm2, text='  Usar  ',command=utilizar).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
-
-    
+def verificar_cor():
+    durty= True
+    if(durty==True):
+        cor="Cyan4"
+    if(durty==False):
+        cor="Cyan3"
+   
 def  substituir_linha():
     escalar=float(escala.get())
     linha=str(num.get())
@@ -139,10 +147,13 @@ def  substituir_linha():
         aa[l[0]]=(escalar*(aa[l[1]])+aa[l[0]])
         final.set(aa)
         uso.set(repr(aa))
+        durty=False
     if(radio==2):
         bb[l[0]]=(escalar*(bb[l[1]])+bb[l[0]])
         final.set(bb)
         uso.set(repr(bb))
+        durty=False
+    verificar_cor()
 def quadrada():
     x=eval(a.get())
     y=eval(b.get())
