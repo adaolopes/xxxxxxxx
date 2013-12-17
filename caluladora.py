@@ -126,6 +126,11 @@ def inserir_log():
         b.insert(INSERT,"log10(")
     else:
         b.insert(INSERT,"log10(")
+def especial():
+    y=b.get() 
+    import funcao_especial
+    res=funcao_especial.funcao(float(y))
+    print(valor.set(res))
 def desenhar():
     global b,valor
     Label(root).pack(side=TOP, padx=1, pady=0)
@@ -179,7 +184,9 @@ def desenhar():
     Button(fm2, text='2',fg="red",command=insere2).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='3',fg="red",command=insere3).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='-',fg="blue",command=inseresub).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text=' função especial ',command=especial).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='x^y').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='%').pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='%').pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
