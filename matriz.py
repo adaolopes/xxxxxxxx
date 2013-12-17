@@ -112,6 +112,7 @@ def desenha():
 
     fm2 = Frame(root)
     Button(fm2, text='Subistituir Linha',command=substituir_linha).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='Matriz Quadrada',command=quadrada).pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
@@ -139,7 +140,16 @@ def  substituir_linha():
     if(radio==2):
         bb[l[0]]=(escalar*(bb[l[1]]+aa[l[0]]))
         final.set(bb)
-    
+def quadrada():
+    x=eval(a.get())
+    y=eval(b.get())
+    radio=(int(v.get()))
+    if(radio==1):
+        z=sqrt(x)
+        final.set(z)
+    if(radio==2):
+        p=sqrt(y)
+        final.set(p)    
     
 def determinante():
     x=eval(a.get())
