@@ -95,6 +95,8 @@ def insere9():
         b.insert(INSERT,"9")
     else:
         b.insert(INSERT,"9")
+def inser():
+    b.insert(INSERT,".")
 def pare():
     x=b.get()
     if(x=="Error"):
@@ -102,8 +104,6 @@ def pare():
         b.insert(INSERT,"(")
     else:
         b.insert(INSERT,"(")
-def inser():
-    b.insert(INSERT,".")
 
 def pare2():
     x=b.get()
@@ -111,7 +111,21 @@ def pare2():
         b.delete(0, END)  
         b.insert(INSERT,")")
     else:
-        b.insert(INSERT,")") 
+        b.insert(INSERT,")")
+def insere_exp():
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"exp(")
+    else:
+        b.insert(INSERT,"exp(")
+def inserir_log():
+    x=b.get()
+    if(x=="Error"):
+        b.delete(0, END)  
+        b.insert(INSERT,"log10(")
+    else:
+        b.insert(INSERT,"log10(")
 def desenhar():
     global b,valor
     Label(root).pack(side=TOP, padx=1, pady=0)
@@ -144,9 +158,8 @@ def desenhar():
     Button(fm1, text='/',fg="blue",command=inserediv).pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='e',command=e).pack(side=LEFT,padx=2,  pady=3)
     Button(fm1, text='π',command=pi).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm1, text='√x').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm1, text='n!',command=factorial).pack(side=LEFT,padx=2,  pady=3)
-    Button(fm1, text='exp').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm1, text='√x',command=quadrado).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm1, text='inserir exponencial',command=insere_exp).pack(side=LEFT,padx=2,  pady=3)
     fm1.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
@@ -155,10 +168,10 @@ def desenhar():
     Button(fm2, text='6',fg="red",command=insere6).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='*',fg="blue",command=inseremult).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='+',command=inseresoma,fg="blue").pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='%').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='inserir logaritimo',command=inserir_log).pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='n!',command=factorial).pack(side=LEFT,padx=2,  pady=3)
+    
     Button(fm2, text='x^2').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='log').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='exp').pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
@@ -167,10 +180,7 @@ def desenhar():
     Button(fm2, text='3',fg="red",command=insere3).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='-',fg="blue",command=inseresub).pack(side=LEFT,padx=2,  pady=3)
     Button(fm2, text='x^y').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='exp').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='mod').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='log').pack(side=LEFT,padx=2,  pady=3)
-    Button(fm2, text='exp').pack(side=LEFT,padx=2,  pady=3)
+    Button(fm2, text='%').pack(side=LEFT,padx=2,  pady=3)
     fm2.pack(fill=BOTH, expand=YES)
 
     fm2 = Frame(root)
@@ -192,6 +202,7 @@ def calcular():
         print(valor.set(result))      
     except:
         valor.set("Error")
+
 def seno():
     import math
     try:
@@ -203,13 +214,13 @@ def seno():
 def coseno():
     import math
     try:
-        print(valor.set('%g' % math.cos(float(b.get()))))
+        print(valor.set(math.cos(float(b.get()))))
     except:
         valor.set("Error")
 def tangente():
     import math
     try:
-        print(valor.set('%g' % math.tan(float(b.get()))))
+        print(valor.set(math.tan(float(b.get()))))
     except:
         valor.set("Error")
 def logaritimo():#certo
@@ -221,7 +232,13 @@ def logaritimo():#certo
 def exponencial():#certo
     import math
     try:
-        print(valor.set('%g' % math.exp(float(b.get()))))
+        print(valor.set(math.exp(float(b.get()))))
+    except:
+        valor.set("Error")
+def quadrado():#certo
+    import math
+    try:
+        print(valor.set(math.sqrt(float(b.get()))))
     except:
         valor.set("Error")
 def pi():
