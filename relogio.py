@@ -1,13 +1,12 @@
 import tkinter 
 rel=tkinter.Label()
-"""def fechar():
-    root.destroy()
-    import caluladora
-    caluladora.menu_principal()
+def fechar():
+    rel.pack_forget()
+    b.pack_forget()
 b=tkinter.Button(fg="red",command=fechar)
-b['text']='Fechar'"""
+b['text']='Fechar'
 rel.pack()
-#b.pack()
+b.pack()
 rel['font']='Helvetica 20 bold'
 from time import strftime
 def tic(): 
@@ -17,3 +16,4 @@ def tac():
     tic()
     rel.after(1000,tac)
 
+tac()
